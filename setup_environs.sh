@@ -168,7 +168,7 @@ case $1 in
 		setup_mysql;;
 	redis)
 		setup_redis;;
-        ?)
-        echo "Unknown parameter"
-        exit 1;;
+  ?)
+    echo "Unknown parameter"
+    exit 1;;
 esac
