@@ -22,11 +22,10 @@ setup_base_environ() {
     echo "installing Java"
     yum install java-1.8.0-openjdk-devel.x86_64
     cat << EOF >> /etc/profile
-    export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.171-8.b10.el6_9.x86_64
-    export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
-    export PATH=$PATH:$JAVA_HOME/bin
-    EOF
-    
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.171-8.b10.el6_9.x86_64
+export CLASSPATH=.:$JAVA_HOME/jre/lib/rt.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$PATH:$JAVA_HOME/bin
+EOF
     source /etc/profile
     java -version > /dev/null
     if [ $? != 0 ]; then
@@ -39,11 +38,11 @@ setup_base_environ() {
 
     mkdir ~/.pip
     cat << EOF > ~/.pip/pip.conf
-    [global]
-    index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-    [install]
-    trusted-host = pypi.tuna.tsinghua.edu.cn
-    EOF
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host = pypi.tuna.tsinghua.edu.cn
+EOF
     echo "setup_base_environ ok"
 }
 
@@ -117,13 +116,13 @@ setup_zookeeper() {
 	mkdir /opt/$ZOOKEEPRE_NAME/data
 	mkdir /opt/$ZOOKEEPRE_NAME/logs
 	cat << EOF > conf/zoo.cfg
-    tickTime = 2000
-    dataDir = /opt/zookeeper-3.7.0/data
-    dataLogDir = /opt/zookeeper-3.7.0/logs
-    clientPort = 2181
-    initLimit = 5
-    syncLimit = 2
-    EOF
+tickTime = 2000
+dataDir = /opt/zookeeper-3.7.0/data
+dataLogDir = /opt/zookeeper-3.7.0/logs
+clientPort = 2181
+initLimit = 5
+syncLimit = 2
+EOF
     firewall-cmd --permanent --add-service=zookeeper
     firewall-cmd reload
     echo "setup_zookeeper ok"
