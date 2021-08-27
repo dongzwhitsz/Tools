@@ -135,21 +135,21 @@ setup_nacos() {
 	cd /opt/nacos-server-2.0.3
 	echo "setup_nacos ok"
 }
-
-setup_kafka() {
-}
-
-setup_es() {
-}
-
-my_server_start() {
-}
-
-my_server_stop() {
-}
-
-my_server_status() {
-}
+#
+#setup_kafka() {
+#}
+#
+#setup_es() {
+#}
+#
+#my_server_start() {
+#}
+#
+#my_server_stop() {
+#}
+#
+#my_server_status() {
+#}
 
 
 servers=(mysql redis)
